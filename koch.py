@@ -4,13 +4,14 @@ from turtle import *
 def koch(order: int, size: float) -> None:
     if order == 0:
         forward(size)
-    koch(order - 1, size / 3)
-    left(60)
-    koch(order - 1, size / 3)
-    right(120)
-    koch(order - 1, size / 3)
-    left(60)
-    koch(order - 1, size / 3)
+    else:
+        koch(order - 1, size / 3)
+        left(60)
+        koch(order - 1, size / 3)
+        right(120)
+        koch(order - 1, size / 3)
+        left(60)
+        koch(order - 1, size / 3)
 
 
 def main() -> None:
@@ -23,6 +24,5 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    tracer(False)
     main()
     mainloop()
