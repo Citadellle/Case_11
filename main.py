@@ -1,94 +1,72 @@
-from turtle import *
-
-
-def water_dragon(a: float, n: int) -> None:
+def main() -> None:
+    import ru_local as ru
+    import turtle as t
+    import Gleb_fractal as gf
+    import Ice_fractal_1 as ice1
+    import Ice_fractal_2 as ice2
+    import Koch_curve as kcruve
+    import koch_snowflake as snow
+    import Levy_curve as levy
+    import Mikhail_fractal as mf
+    import Minkowski_curve as mink
+    import Sergey_fractal as sf
+    import Squares_fractal as squares
+    import Tree_fractal as tree
     '''
-    This function starts a recursive process with a depth of n:
-    1.  The base of the recursion is a semicircle with radius a
-    2.  Subsequent levels of recursion are semicircles
-        on a quarter circle of the previous level
-    3.  At the end of the program, it displays the
-        "Water Dragon" pattern on the screen.
-    :param a:
-    :param n:
-    :return None:
+    This feature allows the user to select a fractal to draw,
+    as well as the parameters for drawing fractals.
     '''
-    if n == 1:
-        if x[n-1] > 0:
-            rt(90)
-            circle(a,180)
-            rt(90)
-        else:
-            lt(90)
-            circle(-a, 180)
-            lt(90)
-        print(x[n-1])
+    choose_fractal = 11
+    while choose_fractal not in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+        print(ru.MENU)
+        choose_fractal = int(input(ru.INPUT_QUESTION))
+
+    tracer_val = None
+    while tracer_val not in [0, 1]:
+        try:
+            tracer_val = int(input(ru.ANIMATION))
+            if tracer_val not in [0, 1]:
+                print(ru.VALUE_ERROR)
+        except:
+            print(ru.VALUE_ERROR)
+
+    if tracer_val == 1:
+        # Отключение анимации рисования, не обновление экрана
+        t.tracer(0)
     else:
+        t.speed(400)
 
-        left(45*x[n-1])
-        x[n-2]*=-1
-        water_dragon(a/2**(1/2), n-1)
-        right(90*x[n-1])
-        x[n-2]*=-1
-        water_dragon((a / 2 ** (1 / 2)), n - 1)
-        left(45*x[n-1])
+    deep = int(input(ru.DEEP))
+    length = int(input(ru.LENGTH))
 
-
-def ice_fractal(a: float, n: int) -> None:
-    '''
-    This function starts a recursive process with a depth of n:
-    1.  The base of recursion is a segment of long a
-    2.  Subsequent levels of recursion - 2 segments of half
-        the length coming out of the center of the segments of
-        the previous level at angles of 60 degrees
-    3.  At the end of the program, it displays the
-        "Ice Fractal" pattern on the screen.
-    :param a:
-    :param n:
-    :return None:
-    '''
-    if n == 0:
-        fd(a)
-    else:
-        ice_fractal(a/2,n-1)
-        lt(120)
-        ice_fractal(a/4,n-1)
-        lt(180)
-        ice_fractal((a/4),n-1)
-        lt(120)
-        ice_fractal(a / 4, n - 1)
-        lt(180)
-        ice_fractal((a / 4), n - 1)
-        lt(120)
-        ice_fractal(a/2,n-1)
+    try:
+        match choose_fractal:
+            case 0:
+                tree.tree(length, deep)
+            case 1:
+                squares.draw_square_spiral(length, 0, deep)
+            case 2:
+                ice1.ice_fractal_1(length, deep)
+            case 3:
+                ice2.ice_fractal_2(length, deep)
+            case 4:
+                kcruve.koch(length, deep)
+            case 5:
+                snow.koch_snowflake(length, deep)
+            case 6:
+                levy.draw_levy_curve(length, deep)
+            case 7:
+                mink.minkowski_curve(length, deep)
+            case 8:
+                mf.minkowski_curve(length, deep)
+            case 9:
+                gf.water_dragon(length, deep)
+            case 10:
+                sf.spiral(length, deep)
+    except RecursionError:
+        print(ru.REC_ERROR)
+    t.mainloop()
 
 
-def tree(a: float, n: int) -> None:
-    '''
-    This function starts a recursive process with a depth of n:
-    1.  The base of recursion is a segment of long a
-    2.  Subsequent levels of recursion - 2 shorter segments
-        extending from the end of the segments of the previous
-        level at angles of 30 degrees
-    3.  At the end of the program, it displays the
-        "Ice Fractal" pattern on the screen.
-    :param a:
-    :param n:
-    :return None:
-    '''
-    if n==0:
-        fd(a)
-        fd(-a)
-    else:
-        fd(3*a/4)
-        rt(30)
-        tree(2*a/3,n-1)
-        lt(60)
-        tree(2*a/3,n-1)
-        rt(30)
-        fd(-3*a/4)
-
-a = int(input())
-n = int(input())
-x = [1] + [-1] * (n - 2) + [1]
-
+if __name__ == '__main__':
+    main()
