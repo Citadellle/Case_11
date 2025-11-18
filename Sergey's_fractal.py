@@ -5,13 +5,13 @@ def spiral(order, size):
     if order == 0:
         forward(size)
     else:
-        spiral(order - 1, size / 2)
+        spiral(order - 1, size / 1.1)
         right(90)
-        spiral(order - 1, size / 3)
+        spiral(order - 1, size / 1.2)
         right(90)
-        spiral(order - 1, size / 4)
+        spiral(order - 1, size / 1.3)
         right(90)
-        spiral(order - 1, size / 5)
+        spiral(order - 1, size / 1.4)
 
 
 def main():
@@ -24,5 +24,6 @@ def main():
 
 
 if __name__ == '__main__':
+    tracer(False)
     main()
     mainloop()
