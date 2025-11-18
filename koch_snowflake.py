@@ -37,6 +37,5 @@ def main():
 
 
 if __name__ == '__main__':
-    tracer(False)
     main()
     mainloop()
