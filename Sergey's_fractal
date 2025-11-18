@@ -1,0 +1,28 @@
+from turtle import *
+
+
+def spiral(order, size):
+    if order == 0:
+        forward(size)
+    else:
+        spiral(order - 1, size / 2)
+        right(90)
+        spiral(order - 1, size / 3)
+        right(90)
+        spiral(order - 1, size / 4)
+        right(90)
+        spiral(order - 1, size / 5)
+
+
+def main():
+    up()
+    goto(-100, 0)
+    down()
+    n = int(input('Глубина рекурсии:'))
+    a = int(input('Длина стороны:'))
+    spiral(n, a)
+
+
+if __name__ == '__main__':
+    main()
+    mainloop()
