@@ -1,4 +1,5 @@
 import turtle as t
+import ru_local as ru
 
 
 def ice_fractal_2(a: float, n: int) -> None:
@@ -32,19 +33,19 @@ def ice_fractal_2(a: float, n: int) -> None:
 
 
 def main():
-    n = int(input('Введите глубину рекурсии: '))
+    n = int(input(ru.DEEP))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
         try:
-            tracer_val = int(input('Отключить анимацию рисования или оставить? (1 - отключить; 0 - оставить) '))
+            tracer_val = int(input(ru.ANIMATION))
             if tracer_val not in [0, 1]:
-                print('Введите корректное значение')
+                print(ru.VALUE_ERROR)
         except:
-            print('Введите корректное значение')
+            print(ru.VALUE_ERROR)
 
     if tracer_val == 1:
-        # Отключение анимации рисования, не обновление экрана
+        # Disabling the drawing animation, not updating the screen
         t.tracer(0)
     else:
         t.speed(400)
@@ -55,8 +56,12 @@ def main():
 
     ice_fractal_2(1000, n)
 
-    # Спрятать курсор черепахи
+    # Hide the turtle cursor
     t.hideturtle()
-    # Обновление окна с черепахой
+    # Updating the turtle window
     t.update()
     t.done()
+
+
+if __name__ == '__main__':
+    main()
