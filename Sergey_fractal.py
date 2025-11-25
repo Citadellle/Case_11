@@ -2,7 +2,7 @@ import turtle as t
 import ru_local as ru
 
 
-def spiral(size, order):
+def spiral(size: float, order: int) -> None:
     '''
     Draws a recursive spiral pattern using turtle graphics.
     
@@ -30,7 +30,7 @@ def spiral(size, order):
         spiral(size / 5, order - 1)
 
 
-def main():
+def main() -> None:
     '''
     Main function that sets up the turtle environment and draws the spiral.
 
@@ -78,3 +78,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
