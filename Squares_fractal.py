@@ -1,59 +1,50 @@
 import turtle as t
+import ru_local as ru
 
-def draw_square_spiral(side_length, angle, depth):
-    """
-    Recursively draws a spiral of squares, twisting clockwise.,
-    in this case, each subsequent square is shifted closer to the center.
 
-    :param t: turtle object
-    :param side_length: side length of the current square
-    :param angle: angle of rotation between squares
-    :param depth: number of squares
-    """
-    if depth <= 0:
-        return
-
-    for side1 in range(4):
-        t.forward(side_length)
+def spiral(size, order):
+    if order == 0:
+        t.forward(size)
+    else:
+        spiral(size / 2, order - 1)
         t.right(90)
-        
-    t.right(angle)
-    '''
-    We move inwards — by a distance
-    proportional to the side and angle
-    '''
-    step_inward = side_length * 0.1 
-    t.forward(step_inward)
-
-    draw_square_spiral(side_length * 0.91, angle, depth - 1)
+        spiral(size / 3, order - 1)
+        t.right(90)
+        spiral(size / 4, order - 1)
+        t.right(90)
+        spiral(size / 5, order - 1)
 
 
 def main():
-    n = int(input('Введите глубину рекурсии: '))
+    n = int(input(ru.DEEP))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
         try:
-            tracer_val = int(input('Отключить анимацию рисования или оставить? (1 - отключить; 0 - оставить) '))
+            tracer_val = int(input(ru.ANIMATION))
             if tracer_val not in [0, 1]:
-                print('Введите корректное значение')
+                print(ru.VALUE_ERROR)
         except:
-            print('Введите корректное значение')
+            print(ru.VALUE_ERROR)
 
     if tracer_val == 1:
-        # Отключение анимации рисования, не обновление экрана
+        # Disabling the drawing animation, not updating the screen
         t.tracer(0)
     else:
         t.speed(400)
 
     t.up()
-    t.goto(-500, 0)
+    t.goto(-500, 250)
     t.down()
 
-    draw_square_spiral(100, n, 45)
+    spiral(1000, n)
 
-    # Спрятать курсор черепахи
+    # Hide the turtle cursor
     t.hideturtle()
-    # Обновление окна с черепахой
+    # Updating the turtle window
     t.update()
     t.done()
+
+
+if __name__ == '__main__':
+    main()
