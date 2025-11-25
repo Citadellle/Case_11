@@ -3,6 +3,21 @@ import ru_local as ru
 
 
 def spiral(size, order):
+    '''
+    Draws a recursive spiral pattern using turtle graphics.
+    
+    The function creates a spiral by recursively drawing smaller segments
+    at right angles to each other. Each recursive level reduces the size
+    of the segments according to specific fractions.
+    
+    Args:
+        size (float): The base size/length of the spiral segments
+        order (int): The recursion depth. Higher orders create more complex spirals.
+                    When order reaches 0, the function draws a straight line.
+    
+    Returns:
+        None
+    '''
     if order == 0:
         t.forward(size)
     else:
@@ -16,6 +31,21 @@ def spiral(size, order):
 
 
 def main():
+    '''
+    Main function that sets up the turtle environment and draws the spiral.
+
+    
+    This function handles user input for recursion depth and animation preferences,
+    configures the turtle graphics window, positions the turtle, and initiates
+    the spiral drawing process.
+    
+    The function provides two visualization modes:
+    - Instant rendering (tracer off) for faster drawing
+    - Animated rendering for watching the drawing process
+    
+    Returns:
+        None
+    '''
     n = int(input(ru.DEEP))
     
     tracer_val = None
