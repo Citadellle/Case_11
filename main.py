@@ -1,25 +1,31 @@
+import turtle as t
+
+import ru_local as ru
+
+import Squares_fractal
+import Tree_fractal
+import Koch_curve
+import Koch_snowflake
+import Minkowski_curve
+import Ice_fractal_1
+import Ice_fractal_2
+import Levy_curve
+
+import Mikhail_fractal
+import Sergey_fractal
+import Gleb_fractal
+
+
 def main() -> None:
-    import ru_local as ru
-    import turtle as t
-    import Gleb_fractal as gf
-    import Ice_fractal_1 as ice1
-    import Ice_fractal_2 as ice2
-    import Koch_curve as kcruve
-    import koch_snowflake as snow
-    import Levy_curve as levy
-    import Mikhail_fractal as mf
-    import Minkowski_curve as mink
-    import Sergey_fractal as sf
-    import Squares_fractal as squares
-    import Tree_fractal as tree
     '''
     This feature allows the user to select a fractal to draw,
     as well as the parameters for drawing fractals.
     '''
-    choose_fractal = 11
+    choose_fractal = None
     while choose_fractal not in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
         print(ru.MENU)
         choose_fractal = int(input(ru.INPUT_QUESTION))
+
 
     tracer_val = None
     while tracer_val not in [0, 1]:
@@ -31,40 +37,64 @@ def main() -> None:
             print(ru.VALUE_ERROR)
 
     if tracer_val == 1:
-        # Отключение анимации рисования, не обновление экрана
+        # Disabling the drawing animation, not updating the screen
         t.tracer(0)
     else:
         t.speed(400)
 
-    deep = int(input(ru.DEEP))
+
     length = int(input(ru.LENGTH))
+    depth = int(input(ru.DEPTH))  
+
+
+    t.up()
+    t.goto(-150, 150)
+    t.down()
 
     try:
         match choose_fractal:
             case 0:
-                tree.tree(length, deep)
+                t.left(90)
+                Tree_fractal.tree(length, depth)
+                
             case 1:
-                squares.draw_square_spiral(length, 0, deep)
+                Squares_fractal.draw_square_spiral(length, depth)
+
             case 2:
-                ice1.ice_fractal_1(length, deep)
+                Ice_fractal_1.ice_fractal_1(length, depth)
+
             case 3:
-                ice2.ice_fractal_2(length, deep)
+                Ice_fractal_2.ice_fractal_2(length, depth)
+
             case 4:
-                kcruve.koch(length, deep)
+                Koch_curve.koch(length, depth)
+
             case 5:
-                snow.koch_snowflake(length, deep)
+                Koch_snowflake.koch_snowflake(length, depth)
+
             case 6:
-                levy.draw_levy_curve(length, deep)
+                Levy_curve.draw_levy_curve(length, depth)
+
             case 7:
-                mink.minkowski_curve(length, deep)
+                Minkowski_curve.minkowski_curve(length, depth)
+
             case 8:
-                mf.minkowski_curve(length, deep)
+                num_corn = int(input(ru.INPUT_QUESTION))
+                Mikhail_fractal.minkowski_curve(length, depth, num_corn)
+
             case 9:
-                gf.water_dragon(length, deep)
+                Gleb_fractal.water_dragon(length, depth)
+
             case 10:
-                sf.spiral(length, deep)
+                Sergey_fractal.spiral(length, depth)
+
     except RecursionError:
         print(ru.REC_ERROR)
+
+    # Hide the turtle cursor
+    t.hideturtle()
+    # Updating the turtle window
+    t.update()
     t.mainloop()
 
 
