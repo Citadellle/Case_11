@@ -1,7 +1,21 @@
 import turtle as t
+import ru_local as ru
 
 
 def ice_fractal_1(length: float, n: int) -> None:
+    '''   
+    The function draws a fractal ice crystal using recursion.
+    At each level of recursion, segments are replaced by more complex structures.
+    
+    Args:
+        length: Current segment length
+        n: Recursion depth
+    
+    Algorithm:
+        n=0: draw straight line
+        n>0: [half segment] -> left 90° -> [quarter] -> right 180° -> 
+             [quarter] -> left 90° -> [half segment]
+    '''
     if n == 0:
         t.fd(length)
     
@@ -16,19 +30,19 @@ def ice_fractal_1(length: float, n: int) -> None:
 
 
 def main():
-    n = int(input('Введите глубину рекурсии: '))
+    n = int(input(ru.DEEP))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
         try:
-            tracer_val = int(input('Отключить анимацию рисования или оставить? (1 - отключить; 0 - оставить) '))
+            tracer_val = int(input(ru.ANIMATION))
             if tracer_val not in [0, 1]:
-                print('Введите корректное значение')
+                print(ru.VALUE_ERROR)
         except:
-            print('Введите корректное значение')
+            print(ru.VALUE_ERROR)
 
     if tracer_val == 1:
-        # Отключение анимации рисования, не обновление экрана
+        # Disabling the drawing animation, not updating the screen
         t.tracer(0)
     else:
         t.speed(400)
@@ -39,8 +53,12 @@ def main():
 
     ice_fractal_1(1000, n)
 
-    # Спрятать курсор черепахи
+    # Hide the turtle cursor
     t.hideturtle()
-    # Обновление окна с черепахой
+    # Updating the turtle window
     t.update()
     t.done()
+
+
+if __name__ == '__main__':
+    main()
