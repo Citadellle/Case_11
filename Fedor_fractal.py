@@ -1,19 +1,19 @@
 import turtle as t
 
 def draw_star(size: float) -> None:
-    """Draws a five-pointed star of the specified size"""
+    '''Draws a five-pointed star of the specified size'''
     for _ in range(5):
         t.forward(size)
         t.right(144)
 
 def recursive_star(size: float, depth: int) -> None:
-    """Recursively draws nested stars
-        in the center of each other"""
+    '''Recursively draws nested stars
+        in the center of each other'''
     if depth <= 0 or size < 5:
         return
 
     t.begin_fill()
-    draw_star(t, size)
+    draw_star(size)
     t.end_fill()
 
     t.penup()
@@ -26,16 +26,16 @@ def recursive_star(size: float, depth: int) -> None:
 
 def main() -> None:
     t.speed(400)
-    t.color("red")
-    t.fillcolor("red")
+    t.color('red')
+    t.fillcolor('red')
 
     t.penup()
     t.goto(0, -100)  
     t.pendown()
 
-    recursive_star(200, 5)  
+    recursive_star(200, int(input()))  
 
-if __name__ == "__main__":
+    t.done()
+
+if __name__ == '__main__':
     main()
-
-
