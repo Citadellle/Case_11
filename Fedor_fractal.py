@@ -25,11 +25,9 @@ def recursive_star(size: float, depth: int) -> None:
     recursive_star(size * 0.6, depth - 1)
 
 def main() -> None:
-    screen = turtle.Screen()
     screen.bgcolor("black")
     screen.setup(800, 800)
 
-    t = turtle.Turtle()
     t.speed(0)
     t.color("red")
     t.fillcolor("red")
@@ -42,3 +40,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
