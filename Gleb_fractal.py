@@ -14,8 +14,7 @@ def water_dragon(a: float, n: int) -> None:
     :param n:
     :return None:
     '''
-    x = [1] + [-1] * (n - 2) + [1]
-
+    
     if n == 1:
         if x[n-1] > 0:
             t.rt(90)
@@ -59,6 +58,7 @@ def main():
     t.goto(-100, 0)
     t.down()
 
+    x = [1] + [-1] * (n - 2) + [1]
     water_dragon(100, n)
 
     # Hide the turtle cursor
@@ -70,4 +70,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
