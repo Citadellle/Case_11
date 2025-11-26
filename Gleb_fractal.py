@@ -2,7 +2,7 @@ import turtle as t
 import ru_local as ru
 
 
-def water_dragon(a: float, n: int) -> None:
+def water_dragon(a: float, n: int, x: list) -> None:
     '''
     This function starts a recursive process with a depth of n:
     1.  The base of the recursion is a semicircle with radius a
@@ -12,13 +12,14 @@ def water_dragon(a: float, n: int) -> None:
         "Water Dragon" pattern on the screen.
     :param a:
     :param n:
+    :param x:
     :return None:
     '''
-    
+
     if n == 1:
-        if x[n-1] > 0:
+        if x[n - 1] > 0:
             t.rt(90)
-            t.circle(a,180)
+            t.circle(a, 180)
             t.rt(90)
         else:
             t.lt(90)
@@ -26,19 +27,18 @@ def water_dragon(a: float, n: int) -> None:
             t.lt(90)
 
     else:
-        t.left(45*x[n-1])
-        x[n-2]*=-1
-        water_dragon(a/2**(1/2), n-1)
-        t.right(90*x[n-1])
-        x[n-2]*=-1
-        water_dragon((a / 2 ** (1 / 2)), n - 1)
-        t.left(45*x[n-1])
-
+        t.left(45 * x[n - 1])
+        x[n - 2] *= -1
+        water_dragon(a / 2 ** (1 / 2), n - 1, x)
+        t.right(90 * x[n - 1])
+        x[n - 2] *= -1
+        water_dragon((a / 2 ** (1 / 2)), n - 1, x)Q
+        t.left(45 * x[n - 1])
 
 
 def main():
     n = int(input(ru.DEPTH))
-    
+
     tracer_val = None
     while tracer_val not in [0, 1]:
         try:
@@ -57,9 +57,9 @@ def main():
     t.up()
     t.goto(-100, 0)
     t.down()
-
+    # List for rotation.
     x = [1] + [-1] * (n - 2) + [1]
-    water_dragon(100, n)
+    water_dragon(100, n, x)
 
     # Hide the turtle cursor
     t.hideturtle()
@@ -70,5 +70,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
