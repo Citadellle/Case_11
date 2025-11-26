@@ -26,6 +26,7 @@ def main() -> None:
     while choose_fractal not in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:
         print(ru.MENU)
         choose_fractal = int(input(ru.INPUT_QUESTION))
+    print()
 
 
     tracer_val = None
@@ -43,9 +44,11 @@ def main() -> None:
     else:
         t.speed(400)
 
-
+    print()
     length = int(input(ru.LENGTH))
-    depth = int(input(ru.DEPTH))  
+    print()
+    depth = int(input(ru.DEPTH))
+    print()
 
 
     try:
@@ -133,3 +136,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+
