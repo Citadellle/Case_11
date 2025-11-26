@@ -2,21 +2,35 @@ import turtle as t
 import ru_local as ru
 
 
-def spiral(size, order):
-    if order == 0:
-        t.forward(size)
-    else:
-        spiral(size / 2, order - 1)
+def draw_square_spiral(side_length, depth, angle= 10):
+    """
+    Recursively draws a spiral of squares, twisting clockwise.,
+    in this case, each subsequent square is shifted closer to the center.
+
+    :param t: turtle object
+    :param side_length: side length of the current square
+    :param angle: angle of rotation between squares
+    :param depth: number of squares
+    """
+    if depth <= 0:
+        return
+
+    for _ in range(4):
+        t.forward(side_length)
         t.right(90)
-        spiral(size / 3, order - 1)
-        t.right(90)
-        spiral(size / 4, order - 1)
-        t.right(90)
-        spiral(size / 5, order - 1)
+        
+    t.right(angle)
+    '''
+    We move inwards — by a distance
+    proportional to the side and angle
+    '''
+    step_inward = side_length * 0.1 
+    t.forward(step_inward)
+    draw_square_spiral(side_length * 0.91, depth - 1)
 
 
 def main():
-    n = int(input(ru.DEEP))
+    n = int(input(ru.DEPTH))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
@@ -34,10 +48,10 @@ def main():
         t.speed(400)
 
     t.up()
-    t.goto(-500, 250)
+    t.goto(0, 0)
     t.down()
 
-    spiral(1000, n)
+    draw_square_spiral(100, n)
 
     # Hide the turtle cursor
     t.hideturtle()
