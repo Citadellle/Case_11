@@ -47,10 +47,6 @@ def main() -> None:
     depth = int(input(ru.DEPTH))  
 
 
-    t.up()
-    t.goto(-150, 150)
-    t.down()
-
     try:
         match choose_fractal:
             case 0:
@@ -79,8 +75,13 @@ def main() -> None:
                 Minkowski_curve.minkowski_curve(length, depth)
 
             case 8:
+                print(ru.MENU_MIKHAIL)
                 num_corn = int(input(ru.INPUT_QUESTION))
-                Mikhail_fractal.minkowski_curve(length, depth, num_corn)
+                if num_corn == 0:
+                    num_corn = 6
+                else:
+                    num_corn = 3
+                Mikhail_fractal.ice_snowflake(length, depth, num_corn)
 
             case 9:
                 Gleb_fractal.water_dragon(length, depth)
