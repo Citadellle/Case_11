@@ -65,7 +65,7 @@ def main() -> None:
     Returns:
         None
     '''
-    n = int(input(ru.DEEP))
+    n = int(input(ru.DEPTH))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
