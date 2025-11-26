@@ -74,7 +74,7 @@ def ice_snowflake(length: float, n: int, num_corn: int) -> None:
 
         
 def main():
-    n = int(input(ru.DEEP))
+    n = int(input(ru.DEPTH))
 
     print(ru.MENU_MIKHAIL)
     option = int(input(ru.INPUT_QUESTION))
