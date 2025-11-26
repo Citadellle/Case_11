@@ -2,21 +2,35 @@ import turtle as t
 import ru_local as ru
 
 
-def spiral(size, order):
-    if order == 0:
-        t.forward(size)
+def tree(a: float, n: int) -> None:
+    '''
+    This function starts a recursive process with a depth of n:
+    1.  The base of recursion is a segment of long a
+    2.  Subsequent levels of recursion - 2 shorter segments
+        extending from the end of the segments of the previous
+        level at angles of 30 degrees
+    3.  At the end of the program, it displays the
+        "Ice Fractal" pattern on the screen.
+    :param a:
+    :param n:
+    :return None:
+    '''
+    if n==0:
+        t.fd(a)
+        t.fd(-a)
+    
     else:
-        spiral(size / 2, order - 1)
-        t.right(90)
-        spiral(size / 3, order - 1)
-        t.right(90)
-        spiral(size / 4, order - 1)
-        t.right(90)
-        spiral(size / 5, order - 1)
+        t.fd(3*a/4)
+        t.rt(30)
+        tree(2*a/3,n-1)
+        t.lt(60)
+        tree(2*a/3,n-1)
+        t.rt(30)
+        t.fd(-3*a/4)
 
 
 def main():
-    n = int(input(ru.DEEP))
+    n = int(input(ru.DEPTH))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
@@ -34,10 +48,11 @@ def main():
         t.speed(400)
 
     t.up()
-    t.goto(-500, 250)
+    t.goto(0, 0)
     t.down()
 
-    spiral(1000, n)
+    t.left(90)
+    tree(100, n)
 
     # Hide the turtle cursor
     t.hideturtle()
