@@ -111,8 +111,8 @@ def main() -> None:
                 t.up()
                 t.goto(- length, - length / 2)
                 t.down()
-                x = [1] + [-1] * (n - 2) + [1]
-                Gleb_fractal.water_dragon(length, depth)
+                rotation = [1] + [-1] * (depth - 2) + [1]
+                Gleb_fractal.water_dragon(length, depth, rotation)
 
             case 10:
                 Sergey_fractal.spiral(length, depth)
@@ -133,5 +133,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
-
