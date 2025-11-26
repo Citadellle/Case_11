@@ -1,12 +1,12 @@
-import turtle
+import turtle as t
 
-def draw_star(t: turtle.Turtle, size: float) -> None:
+def draw_star(size: float) -> None:
     """Draws a five-pointed star of the specified size"""
     for _ in range(5):
         t.forward(size)
         t.right(144)
 
-def recursive_star(t: turtle.Turtle, size: float, depth: int) -> None:
+def recursive_star(size: float, depth: int) -> None:
     """Recursively draws nested stars
         in the center of each other"""
     if depth <= 0 or size < 5:
@@ -22,7 +22,7 @@ def recursive_star(t: turtle.Turtle, size: float, depth: int) -> None:
     t.right(90)         
     t.pendown()
 
-    recursive_star(t, size * 0.6, depth - 1)
+    recursive_star(size * 0.6, depth - 1)
 
 def main() -> None:
     screen = turtle.Screen()
@@ -38,11 +38,7 @@ def main() -> None:
     t.goto(0, -100)  
     t.pendown()
 
-    recursive_star(t, 200, 5)  
+    recursive_star(200, 5)  
 
 if __name__ == "__main__":
     main()
-
-
-
-
