@@ -14,6 +14,7 @@ import Levy_curve
 import Mikhail_fractal
 import Sergey_fractal
 import Gleb_fractal
+import Fedor_fractal
 
 
 def main() -> None:
@@ -22,7 +23,7 @@ def main() -> None:
     as well as the parameters for drawing fractals.
     '''
     choose_fractal = None
-    while choose_fractal not in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+    while choose_fractal not in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:
         print(ru.MENU)
         choose_fractal = int(input(ru.INPUT_QUESTION))
 
@@ -115,6 +116,10 @@ def main() -> None:
             case 10:
                 Sergey_fractal.spiral(length, depth)
 
+            case 11:
+                Fedor_fractal.recursive_star(length, depth)
+
+
     except RecursionError:
         print(ru.REC_ERROR)
 
@@ -127,3 +132,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+
