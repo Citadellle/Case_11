@@ -19,7 +19,7 @@ def draw_levy_curve(length: float, depth: int) -> None:
 
 
 def main():
-    n = int(input(ru.DEEP))
+    n = int(input(ru.DEPTH))
     
     tracer_val = None
     while tracer_val not in [0, 1]:
@@ -51,3 +51,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
