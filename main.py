@@ -54,24 +54,42 @@ def main() -> None:
                 Tree_fractal.tree(length, depth)
                 
             case 1:
+                t.up()
+                t.goto(- length/2, length/2)
+                t.down()
                 Squares_fractal.draw_square_spiral(length, depth)
 
             case 2:
+                t.up()
+                t.goto(- length/2, 0)
+                t.down()
                 Ice_fractal_1.ice_fractal_1(length, depth)
 
             case 3:
+                t.up()
+                t.goto(- length/2, 0)
+                t.down()
                 Ice_fractal_2.ice_fractal_2(length, depth)
 
             case 4:
+                t.up()
+                t.goto(- length/2, 0)
+                t.down()
                 Koch_curve.koch(length, depth)
 
             case 5:
+                t.up()
+                t.goto(- length/2, length/2)
+                t.down()
                 Koch_snowflake.koch_snowflake(length, depth)
 
             case 6:
                 Levy_curve.draw_levy_curve(length, depth)
 
             case 7:
+                t.up()
+                t.goto(- length/2, 0)
+                t.down()
                 Minkowski_curve.minkowski_curve(length, depth)
 
             case 8:
@@ -81,9 +99,17 @@ def main() -> None:
                     num_corn = 6
                 else:
                     num_corn = 3
+
+                t.up()
+                t.goto(- length/2, length)
+                t.down()
+
                 Mikhail_fractal.ice_snowflake(length, depth, num_corn)
 
             case 9:
+                t.up()
+                t.goto(- length, - length / 2)
+                t.down()
                 Gleb_fractal.water_dragon(length, depth)
 
             case 10:
