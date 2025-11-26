@@ -32,7 +32,7 @@ def water_dragon(a: float, n: int, x: list) -> None:
         water_dragon(a / 2 ** (1 / 2), n - 1, x)
         t.right(90 * x[n - 1])
         x[n - 2] *= -1
-        water_dragon((a / 2 ** (1 / 2)), n - 1, x)Q
+        water_dragon((a / 2 ** (1 / 2)), n - 1, x)
         t.left(45 * x[n - 1])
 
 
@@ -70,3 +70,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
